@@ -14,6 +14,7 @@ app.post(`/login`, async (req, res) => {
   console.log(`/login`);
   console.log(req.headers["x-forwarded-for"] || req.socket.remoteAddress);
   console.log(req.body);
+  console.log(new Date())
   res.setHeader("Content-Type", "application/json");
 
   axios({
@@ -49,19 +50,24 @@ app.post(`/login`, async (req, res) => {
             })
         })
         .then(function (response) {
+            console.log('success');
             res.send(response.data)
         })
         .catch(function (error) {
-            console.log(error);
+            // console.log(error);
+            console.log('error');
+
             res.sendStatus(500)
         });
     })
     .catch(function (error) {
-      console.log(error);
-      res.sendStatus(500)
+    //   console.log(error);
+        console.log('error');
+
+        res.sendStatus(500)
     });
 });
 
 app.listen(PORT, () => {
-  console.log(`API Started on *:${PORT}`);
+    console.log(`API Started on *:${PORT}`);
 });
