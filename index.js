@@ -9,6 +9,9 @@ app.use(express.json());
 
 const PORT = 7630;
 
+require('./api/login')
+require('./api/post')
+
 app.listen(PORT, () => {
-    console.log(`API Started on *:${PORT}`);
+    console.log(`BeFake API *:${PORT}`);
 });
